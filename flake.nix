@@ -2,15 +2,15 @@
     description = "NixOS System Flake";
 
     inputs = {
-        stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+        # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
         # nixvim.url = "github:AntonioDrumond/nixvim";
         nvf = {
             url = "github:notashelf/nvf";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+        # nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     };
 
     outputs =
@@ -28,8 +28,6 @@
                     # NVF module and config file
                     nvf.nixosModules.default
                     ./nvf.nix
-                    # Nix-flatpak module
-                    nix-flatpak.nixosModules.nix-flatpak
                 ];
             };
         };

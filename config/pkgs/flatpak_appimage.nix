@@ -1,9 +1,9 @@
 { lib, self, ... }:
 {
     services.flatpak = {
-        enable = true;
+        enable = false;
         packages = [
-            { appId = "net.waterfox.waterfox"; origin = "flathub"; }
+            # { appId = "net.waterfox.waterfox"; origin = "flathub"; }
         ];
     };
 
