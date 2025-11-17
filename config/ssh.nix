@@ -16,7 +16,7 @@
 
     fail2ban = {
       enable = true;
-      maxentry = 5;
+      maxretry = 5;
       bantime = "1m";
     };
   };
