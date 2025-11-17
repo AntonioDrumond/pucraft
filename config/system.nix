@@ -7,35 +7,35 @@
 
     environment.sessionVariables = {
         # NIXOS_OZONE_WL = "1";
-        GDK_BACKEND = "wayland,x11";
-        GDK_SCALE = 1;
-        QT_SCALE_FACTOR = "1.0";
-        QT_QPA_PLATFORM = "wayland;xcb";
+        # GDK_BACKEND = "wayland,x11";
+        # GDK_SCALE = 1;
+        # QT_SCALE_FACTOR = "1.0";
+        # QT_QPA_PLATFORM = "wayland;xcb";
         # QT_QPA_PLATFORMTHEME = "qt6ct";
     };
 
     services = {
         thermald.enable = true;
-        printing.enable = true;
+        # printing.enable = true;
         logind.powerKey = "suspend";
     };
 
     hardware = {
         # Drawing tablet driver
-        opentabletdriver.enable = true;
+        # opentabletdriver.enable = true;
         # Brightness control
         brillo.enable = true;
     };
 
     # Bluetooth
-    services.blueman.enable = true;
+    services.blueman.enable = false;
     hardware.bluetooth = {
-        enable = true;
-        powerOnBoot = true;
+        enable = false;
+        powerOnBoot = false;
         input.General.ClassicBondedOnly = false;
     };
 
     # DO NOT CHANGE
-    system.stateVersion = "24.11"; # Did you read the comment?
+    system.stateVersion = "25.05"; # Did you read the comment?
 }
     
