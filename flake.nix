@@ -10,11 +10,10 @@
             url = "github:notashelf/nvf";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        # nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     };
 
     outputs =
-        { self, nixpkgs, nvf, nix-flatpak, ... }@inputs:
+        { self, nixpkgs, nvf, ... }@inputs:
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
