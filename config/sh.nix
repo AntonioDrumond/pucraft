@@ -7,8 +7,8 @@
                 add_newline = true;
                 # "$schema" = "https://starship.rs/config-schema.json";
                 character = {
-                    success_symbol = "[❯](bold green)";
-                    error_symbol = "[❯](bold bright green)";
+                    success_symbol = "[>](bold green)";
+                    error_symbol = "[>](bold bright green)";
                 };
                 nix_shell = {
                     symbol = " ";
@@ -19,7 +19,7 @@
                     style_user = "green bold";
                     style_root = "bright-red bold";
                 };
-                os.disabled = false;
+                os.disabled = true;
                 # palette = "catppuccin_${"mocha"}";
             };
         };

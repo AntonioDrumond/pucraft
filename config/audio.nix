@@ -1,21 +1,23 @@
 { lib, self, ... }:
 {
-    security.rtkit.enable = true;
+    security.rtkit.enable = false;
     services = {
         pipewire = {
-            enable = true;
-            alsa.enable = true;
-            alsa.support32Bit = true;
-            pulse.enable = true;
-            jack.enable = true;
-            wireplumber.enable = true;
+            enable = false;
+            alsa.enable = false;
+            alsa.support32Bit = false;
+            pulse.enable = false;
+            jack.enable = false;
+            wireplumber.enable = false;
         };
     };
 
     hardware.enableAllFirmware = true;
+    /*
     boot.extraModprobeConfig = ''
         options snd-intel-dspcfg dsp_driver=1
     '';
+    */
 
 }
     
