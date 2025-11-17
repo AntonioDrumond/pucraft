@@ -1,45 +1,23 @@
 { pkgs, ... }:
 {
-    users = {
-        users.antonio = {
-            isNormalUser = true;
-            description = "Antonio Drumond";
-            extraGroups = [
-                "networkmanager"
-                "wheel"
-                "libvirtd"
-            ];
-            packages = with pkgs; [
-                kdePackages.kate
-            ];
-            shell = pkgs.fish;
-        };
-        users.puddo = {
-            isNormalUser = true;
-            description = "Davi Puddo";
-            extraGroups = [
-                "libvirtd"
-                "wheel"
-            ];
-        };
+  users = {
+    users.admin = {
+      isNormalUser = true;
+      description = "Administrô";
+      extraGroups = [
+        "wheel"
+      ];
+      shell = pkgs.fish;
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAilxUfZRgFyrYKgIyPFyL0tqIBLHNdQEzV4tzFdWYoP my-nixos-server-key"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE4L3orN6izro3j6pfJy7vQ724wyS2Y+lpASapZ6VRsZ minecraft-server"
+      ];
     };
+  };
 
-    networking = {
-        hostName = "nixos"; 
-        networkmanager.enable = true;
-    };
+  networking = {
+    hostName = "pucraft";
+    networkmanager.enable = true;
+  };
 
-    services = {
-        openssh = {
-            enable = true;
-            ports = [ 22 ];
-            settings = {
-                UseDns = true;
-                PasswordAuthentication = true;
-                AllowUsers = [ "puddo" "antonio" ];
-                X11Forwarding = false;
-                PermitRootLogin = "no";
-            };
-        };
-    };
 }
