@@ -5,7 +5,5 @@
   networking = {
     hostName = "pucraft";
     networkmanager.enable = true;
-    firewall.allowedTCPPorts = [ ];
-    interfaces."tailscale0".allowedTCPPorts = [ 22 ];
   };
 }
