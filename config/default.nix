@@ -2,7 +2,7 @@
 {
   imports = [
     ./pkgs
-
+    ./networking.nix
     ./hardware-configuration.nix
     ./system.nix
     ./users.nix
