@@ -15,9 +15,4 @@
     };
   };
 
-  networking = {
-    hostName = "pucraft";
-    networkmanager.enable = true;
-  };
-
 }
