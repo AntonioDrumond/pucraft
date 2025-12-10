@@ -1,6 +1,6 @@
 { pkgs, lib, self, ... }:
 {
-    services.minecraft-server_2 = {
+    services.minecraft-server = {
         enable = true;
         eula = true;
         package = pkgs.papermcServers.papermc-1_21_9;
