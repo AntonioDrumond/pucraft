@@ -10,5 +10,6 @@
     ./audio.nix
     ./sh.nix
     ./ssh.nix
+    ./minecraft.nix
   ];
 }
