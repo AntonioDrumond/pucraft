@@ -13,11 +13,14 @@
         serverProperties = {
             server-port = 43000;
             difficulty = 3;
-            gamemode = 1;
-            max-players = 1;
+            gamemode = 0;
+            max-players = 2;
             motd = "PUCraft!";
             white-list = true;
             allow-cheats = true;
+            view-distance=16;
+            enforce-whitelist = true;
+            hide-online-players = true;
         };
         jvmOpts = "-Xms2048M -Xmx8192M";
     };
