@@ -1,2 +1,2 @@
-./whitelist.nix
-./secrets.nix
+whitelist.nix
+secrets.nix
