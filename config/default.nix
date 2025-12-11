@@ -2,6 +2,8 @@
 {
   imports = [
     ./pkgs
+    ./minecraft
+
     ./networking.nix
     ./hardware-configuration.nix
     ./system.nix
@@ -10,6 +12,5 @@
     ./audio.nix
     ./sh.nix
     ./ssh.nix
-    ./minecraft.nix
   ];
 }
