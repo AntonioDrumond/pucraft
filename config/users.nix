@@ -6,6 +6,7 @@
       description = "Administrô";
       extraGroups = [
         "wheel"
+        "networkmanager"
       ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [
