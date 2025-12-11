@@ -17,7 +17,7 @@
     };
 
     outputs =
-        { nixpkgs, nvf, nix-minecraft, ... }@inputs:
+        { nixpkgs, nvf, ... }@inputs:
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
@@ -33,7 +33,7 @@
                     ./nvf.nix
 
                     # Minecraft modules
-                    nix-minecraft
+                    # nix-minecraft
                     /*
                     {
                       nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
