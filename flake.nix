@@ -33,10 +33,12 @@
                     ./nvf.nix
 
                     # Minecraft modules
-                    nix-minecraft.nixosModules.minecraft-servers
+                    nix-minecraft
+                    /*
                     {
                       nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
                     }
+                    */
                 ];
             };
         };
