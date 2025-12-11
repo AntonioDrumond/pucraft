@@ -7,6 +7,7 @@
       extraGroups = [
         "wheel"
         "networkmanager"
+        "minecraft"
       ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [
