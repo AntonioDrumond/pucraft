@@ -10,10 +10,14 @@
             url = "github:notashelf/nvf";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nix-minecraft = {
+            url = "github:Infinidoge/nix-minecraft";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs =
-        { self, nixpkgs, nvf, ... }@inputs:
+        { nixpkgs, nvf, nix-minecraft, ... }@inputs:
         let
             system = "x86_64-linux";
             pkgs = nixpkgs.legacyPackages.${system};
@@ -27,6 +31,12 @@
                     # NVF module and config file
                     nvf.nixosModules.default
                     ./nvf.nix
+
+                    # Minecraft modules
+                    nix-minecraft.nixosModules.minecraft-servers
+                    {
+                      nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+                    }
                 ];
             };
         };
