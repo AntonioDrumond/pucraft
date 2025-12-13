@@ -1,9 +1,12 @@
 { ... }:
 {
-  services.tailscale.enable = true;
+    services.tailscale = { 
+        enable = true;
+    };
 
-  networking = {
-    hostName = "pucraft";
-    networkmanager.enable = true;
-  };
+    networking = {
+        hostName = "pucraft";
+        networkmanager.enable = true;
+        firewall.allowedTCPPorts = [ 43000 ];
+    };
 }

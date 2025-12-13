@@ -1,4 +1,8 @@
-{ inputs, ... }:
+{ config, lib, inputs, ... }:
+let
+    whitelistPath = config.sops.secrets.minecraft_server_whitelist.path;
+    serverPath = config.services.minecraft-server.dataDir;
+in
 {
     services.minecraft-server = {
         enable = true;
@@ -7,6 +11,7 @@
         package = inputs.nix-minecraft.legacyPackages.x86_64-linux.fabricServers.fabric-1_21_9;
         openFirewall = true; # Opens the port the server is running on (by default 25565 but in this case 43000)
         declarative = true;
+        whitelist = { };
         serverProperties = {
             server-port = 43000;
             difficulty = 3;
@@ -21,5 +26,10 @@
         };
         jvmOpts = "-Xms2048M -Xmx8192M";
     };
-}
 
+    # Get UUID from https://mcuuid.net/
+    systemd.services.minecraft-server.preStart = lib.mkAfter ''
+        echo "Applying whitelist..."
+        ln -sf ${whitelistPath} ${serverPath}/whitelist.json
+    '';
+}

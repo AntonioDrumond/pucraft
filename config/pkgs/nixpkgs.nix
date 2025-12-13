@@ -26,6 +26,9 @@
         #Hardware/Libs
         fan2go
         btop
+
+        noip
+        sops
     ];
 
 

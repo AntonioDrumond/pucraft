@@ -1,16 +1,14 @@
-{ lib, self, ... }:
+{ lib, ... }:
+let
+    scanEntries = path:
+        let
+            entries = builtins.readDir path;
+            nixImports = lib.filterAttrs (
+                name: _: name != "default.nix"
+            ) entries;
+        in
+            lib.mapAttrsToList (name: _: path + "/${name}") nixImports;
+in
 {
-  imports = [
-    ./pkgs
-    ./minecraft
-
-    ./networking.nix
-    ./hardware-configuration.nix
-    ./system.nix
-    ./users.nix
-    ./localization.nix
-    ./audio.nix
-    ./sh.nix
-    ./ssh.nix
-  ];
+  imports = scanEntries ./.;
 }
