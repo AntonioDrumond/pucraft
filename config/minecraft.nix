@@ -1,7 +1,7 @@
 { config, lib, inputs, ... }:
 let
     whitelistPath = config.sops.secrets.minecraft_server_whitelist.path;
-    serverPath = config.services.minecraft-server.dataDir;
+    seedPath = config.sops.secrets.minecraft_server_seed.path;
 in
 {
     services.minecraft-server = {
@@ -16,7 +16,7 @@ in
             server-port = 43000;
             difficulty = 3;
             gamemode = 0;
-            max-players = 2;
+            max-players = 3;
             motd = "PUCraft!";
             white-list = true;
             allow-cheats = true;
@@ -29,7 +29,17 @@ in
 
     # Get UUID from https://mcuuid.net/
     systemd.services.minecraft-server.preStart = lib.mkAfter ''
-        echo "Applying whitelist..."
-        ln -sf ${whitelistPath} ${serverPath}/whitelist.json
+        ln -sf ${whitelistPath} whitelist.json
+
+        if [ -L server.properties ]; then
+            cp --remove-destination "$(readlink -f server.properties)" server.properties.tmp
+            mv server.properties.tmp server.properties
+            chmod 600 server.properties
+        fi
+
+        sed -i '/^level-seed=/d' server.properties
+
+        echo "" >> server.properties
+        echo "level-seed=$(cat ${seedPath})" >> server.properties
     '';
 }

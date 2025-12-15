@@ -13,5 +13,10 @@
             owner = "minecraft";
             group = "minecraft";
         };
+
+        secrets.minecraft_server_seed = {
+            owner = "minecraft";
+            group = "minecraft";
+        };
     };
 }
