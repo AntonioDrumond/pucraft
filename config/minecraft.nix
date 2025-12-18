@@ -16,7 +16,7 @@ in
             server-port = 43000;
             difficulty = 3;
             gamemode = 0;
-            max-players = 3;
+            max-players = 10;
             motd = "PUCraft!";
             white-list = true;
             allow-cheats = true;
