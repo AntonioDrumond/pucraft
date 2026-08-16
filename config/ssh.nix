@@ -6,7 +6,7 @@
       ports = [ 22 ];
       settings = {
         UseDns = true;
-        PasswordAuthentication = false;
+        PasswordAuthentication = true;
         KbdInteractiveAuthentication = false;
         X11Forwarding = false;
         PermitRootLogin = "no";
