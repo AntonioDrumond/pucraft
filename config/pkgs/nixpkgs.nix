@@ -2,7 +2,7 @@
 {
     nixpkgs.config = {
         allowUnfree = true;
-        permittedInsecurePackages = [ "ventoy-1.1.05" ];
+        permittedInsecurePackages = [ "ventoy-1.1.12" ];
     };
 
     environment.systemPackages = with pkgs; [
@@ -10,6 +10,7 @@
         #CLI -> Essential
         vim
         git
+        gh
         fzf
         zip
         unzip

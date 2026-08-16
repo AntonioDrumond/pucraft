@@ -8,7 +8,7 @@ in
         enable = true;
         eula = true;
         # package = pkgs.papermcServers.papermc-1_21_9;
-        package = inputs.nix-minecraft.legacyPackages.x86_64-linux.fabricServers.fabric-1_21_9;
+        package = inputs.nix-minecraft.legacyPackages.x86_64-linux.fabricServers.fabric-26_2;
         openFirewall = true; # Opens the port the server is running on (by default 25565 but in this case 43000)
         declarative = true;
         whitelist = { };
@@ -23,11 +23,16 @@ in
             view-distance=16;
             enforce-whitelist = true;
             hide-online-players = true;
+            level-seed = 100001081160328852;
         };
         jvmOpts = "-Xms2048M -Xmx8192M";
     };
 
     # Get UUID from https://mcuuid.net/
+    services.minecraft-server.whitelist = {
+        Zack_Sousa = "b5d43927-077d-414a-a747-ecf057de3125";
+    };
+    /*
     systemd.services.minecraft-server.preStart = lib.mkAfter ''
         ln -sf ${whitelistPath} whitelist.json
 
@@ -42,4 +47,5 @@ in
         echo "" >> server.properties
         echo "level-seed=$(cat ${seedPath})" >> server.properties
     '';
+    */
 }
