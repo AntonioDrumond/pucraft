@@ -8,7 +8,8 @@ in
         enable = true;
         eula = true;
         # package = pkgs.papermcServers.papermc-1_21_9;
-        package = inputs.nix-minecraft.legacyPackages.x86_64-linux.fabricServers.fabric-26_2;
+        # package = inputs.nix-minecraft.legacyPackages.x86_64-linux.fabricServers.fabric-26_2;
+        package = inputs.nix-minecraft.legacyPackages.x86_64-linux.fabricServers.fabric-1_21_9;
         openFirewall = true; # Opens the port the server is running on (by default 25565 but in this case 43000)
         declarative = true;
         whitelist = { };
