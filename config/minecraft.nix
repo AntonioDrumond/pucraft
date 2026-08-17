@@ -12,7 +12,6 @@ in
         package = inputs.nix-minecraft.legacyPackages.x86_64-linux.fabricServers.fabric-1_21_9;
         openFirewall = true; # Opens the port the server is running on (by default 25565 but in this case 43000)
         declarative = true;
-        # whitelist = { };
         serverProperties = {
             server-port = 43000;
             difficulty = 3;
@@ -27,11 +26,11 @@ in
             level-seed = 100001081160328852;
         };
         jvmOpts = "-Xms2048M -Xmx8192M";
-    };
-
-    # Get UUID from https://mcuuid.net/
-    services.minecraft-server.whitelist = {
-        Zack_Sousa = "b5d43927-077d-414a-a747-ecf057de3125";
+        # Get UUID from https://mcuuid.net/
+        whitelist = {
+            Zack_Sousa = "b5d43927-077d-414a-a747-ecf057de3125";
+            Telecuteo = "ea34636a-5d13-47ad-8ef5-037ea0c2c3d7";
+        };
     };
     /*
     systemd.services.minecraft-server.preStart = lib.mkAfter ''

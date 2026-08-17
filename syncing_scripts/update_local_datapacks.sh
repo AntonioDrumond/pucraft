@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cp /home/admin/repos/pucraft/datapacks/* /var/lib/minecraft/world/datapacks
+cp /home/admin/pucraft/datapacks/* /var/lib/minecraft/world/datapacks
