@@ -1,4 +1,4 @@
-{ config, lib, inputs, ... }:
+{ pkgs, config, lib, inputs, ... }:
 let
     whitelistPath = config.sops.secrets.minecraft_server_whitelist.path;
     seedPath = config.sops.secrets.minecraft_server_seed.path;
@@ -30,8 +30,29 @@ in
         whitelist = {
             Zack_Sousa = "b5d43927-077d-414a-a747-ecf057de3125";
             Telecuteo = "ea34636a-5d13-47ad-8ef5-037ea0c2c3d7";
+            K3jira = "1ee6d080-ae42-41ff-ac3c-c6ed03180245";
+            elmo_000_ = "5dda52f5-c728-4531-b8d5-aeea3fd504d5";
+            GaBeeDrumond = "c77e98be-dcd6-4b44-8073-10fa81e7e607";
         };
     };
+
+    systemd.timers.minecraft-restart = {
+        description = "Restart Minecraft server daily";
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+            OnCalendar = "*-*-* 04:15:00";
+            Persistent = true;
+        };
+    };
+
+    systemd.services.minecraft-restart = {
+        description = "Restart Minecraft server";
+        serviceConfig = {
+            Type = "oneshot";
+            ExecStart = "${pkgs.systemd}/bin/systemctl restart minecraft-server";
+        };
+    };
+
     /*
     systemd.services.minecraft-server.preStart = lib.mkAfter ''
         ln -sf ${whitelistPath} whitelist.json
