@@ -9,6 +9,10 @@
         networkmanager.enable = true;
         firewall.allowedTCPPorts = [ 43000 ];
         firewall.trustedInterfaces = [ "wlp2s0" ];
+        interfaces.wlp2s0.ipv4.addresses = [{
+            address = "192.168.0.197";
+            prefixLength = 24;
+        }];
     };
 
     systemd.services.router-heartbeat = {
